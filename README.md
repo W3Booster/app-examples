@@ -43,7 +43,7 @@ Host actions are disabled in the standalone demo because there is no authenticat
 4. Copy the generated client ID and bind this project:
 
    ```sh
-   npx w3booster-settings init YOUR_CLIENT_ID
+   npx w3booster-settings init YOUR_CLIENT_ID --endpoint https://api.w3booster.com
    ```
 
 5. Commit `src/w3booster.generated.ts` and the updated `package.json`. The client ID is public; user launch credentials are managed by the SDK.

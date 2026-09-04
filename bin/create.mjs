@@ -14,7 +14,7 @@ try { await access(target); throw new Error(`Directory already exists: ${target}
 catch (error) { if (error.code !== 'ENOENT') throw error; }
 const source = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 await mkdir(target, { recursive: true });
-for (const file of ['src', 'scripts', 'index.html', 'tsconfig.json', 'vite.config.ts', 'app-definition.json', 'README.md', 'LICENSE']) {
+for (const file of ['src', 'scripts', 'docs', 'index.html', 'tsconfig.json', 'vite.config.ts', 'app-definition.json', 'README.md', 'LICENSE']) {
   await cp(resolve(source, file), resolve(target, file), { recursive: true });
 }
 const manifest = JSON.parse(await readFile(resolve(source, 'package.json'), 'utf8'));
