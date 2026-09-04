@@ -1,0 +1,15 @@
+{
+  "name": "Developer Lab",
+  "description": "Learn the W3Booster SDK with a match dashboard, resources, settings, compact windows, and a transparent overlay. Includes offline demo scenarios and complete source.",
+  "homepage": "https://github.com/W3Booster/app-examples",
+  "surfaces": ["application", "streamOverlay", "ingameOverlay"],
+  "applicationUrl": "https://w3booster.github.io/app-examples/?demo=0",
+  "streamOverlayUrl": "https://w3booster.github.io/app-examples/?view=overlay&demo=0",
+  "ingameOverlayUrl": "https://w3booster.github.io/app-examples/?view=overlay&demo=0",
+  "scopes": ["match:read", "players:read", "resources:read", "heroes:read", "overlay:read"],
+  "settingsSchema": {
+    "version": 1,
+    "sections": [{ "id": "display", "title": "Display", "groups": [{ "id": "appearance", "title": "Appearance" }],
+      "fields": [{ "key": "display.title", "label": "App title", "type": "text", "group": "appearance", "default": "My first W3Booster app" }] }]
+  }
+}

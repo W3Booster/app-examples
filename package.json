@@ -1,0 +1,21 @@
+{
+  "name": "@w3booster/app-examples",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Runnable W3Booster examples and a zero-account app starter",
+  "license": "MIT",
+  "repository": "https://github.com/W3Booster/app-examples",
+  "bin": { "w3booster-create": "bin/create.mjs" },
+  "files": ["bin", "src", "scripts", "index.html", "tsconfig.json", "vite.config.ts", "app-definition.json", "README.md", "LICENSE"],
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5173 --strictPort",
+    "check": "tsc --noEmit && node --test scripts/create.test.mjs",
+    "test:browser": "node scripts/browser-test.mjs"
+  },
+  "engines": { "node": ">=22.22.3" },
+  "dependencies": { "@w3booster/sdk": "1.0.2" },
+  "devDependencies": { "vite": "8.2.2", "typescript": "~6.0.3", "playwright": "^1.62.1", "@types/node": "^22.0.0" }
+}
