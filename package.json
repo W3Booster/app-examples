@@ -1,24 +1,22 @@
 {
   "name": "@w3booster/app-examples",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
   "type": "module",
-  "description": "Runnable W3Booster examples and a zero-account app starter",
+  "description": "Directory of independently runnable W3Booster example apps",
   "license": "MIT",
   "repository": "https://github.com/W3Booster/app-examples",
-  "bin": { "w3booster-create": "bin/create.mjs" },
-  "files": ["bin", "src", "scripts", "docs", "index.html", "tsconfig.json", "vite.config.ts", "app-definition.json", "README.md", "LICENSE"],
-  "scripts": {
-    "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
-    "build": "tsc --noEmit && vite build",
-    "preview": "vite preview --host 127.0.0.1 --port 5173 --strictPort",
-    "check": "tsc --noEmit && node scripts/sync-examples.mjs --check && node --test scripts/create.test.mjs",
-    "examples:sync": "node scripts/sync-examples.mjs",
-    "examples:check": "node scripts/sync-examples.mjs --check",
-    "screenshots": "npm run build && node scripts/screenshots.mjs",
-    "test:browser": "node scripts/browser-test.mjs"
+  "bin": {
+    "w3booster-create": "bin/create.mjs"
   },
-  "engines": { "node": ">=22.22.3" },
-  "dependencies": { "@w3booster/sdk": "1.0.3" },
-  "devDependencies": { "vite": "8.2.2", "typescript": "~6.0.3", "playwright": "^1.62.1", "@types/node": "^22.0.0" }
+  "files": [
+    "bin"
+  ],
+  "scripts": {
+    "check": "node --test scripts/directory.test.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "engines": {
+    "node": ">=22.22.3"
+  }
 }

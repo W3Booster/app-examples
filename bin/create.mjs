@@ -1,32 +1,6 @@
 #!/usr/bin/env node
-import { cp, mkdir, readFile, writeFile, access } from 'node:fs/promises';
-import { dirname, resolve, basename } from 'node:path';
-import { fileURLToPath } from 'node:url';
-
-const args = process.argv.slice(2);
-if (args.includes('--help') || !args.length) {
-  console.log('Usage: w3booster-create <new-directory>\nCreates a complete TypeScript app with demo data. No account required.');
-  process.exit(args.length ? 0 : 1);
-}
-if (args.length !== 1 || args[0].startsWith('-')) throw new Error('Provide exactly one new project directory.');
-const target = resolve(args[0]);
-try { await access(target); throw new Error(`Directory already exists: ${target}. Choose a new directory; existing files are never overwritten.`); }
-catch (error) { if (error.code !== 'ENOENT') throw error; }
-const source = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-await mkdir(target, { recursive: true });
-for (const file of ['src', 'scripts', 'docs', 'index.html', 'tsconfig.json', 'vite.config.ts', 'app-definition.json', 'README.md', 'LICENSE']) {
-  await cp(resolve(source, file), resolve(target, file), { recursive: true, filter: path => !['src/registered', 'scripts/sync-examples.mjs', 'scripts/screenshots.mjs'].some(excluded => path === resolve(source, excluded)) });
-}
-const manifest = JSON.parse(await readFile(resolve(source, 'package.json'), 'utf8'));
-// Even after the official demo is registered, new projects must have their own identity.
-await cp(resolve(source, 'bin/demo-definition.ts'), resolve(target, 'src/w3booster.generated.ts'));
-await cp(resolve(source, 'bin/demo-application.ts'), resolve(target, 'src/application.ts'));
-manifest.name = basename(target).toLowerCase().replace(/[^a-z0-9-]/g, '-') || 'my-w3booster-app';
-delete manifest.bin; delete manifest.files; delete manifest.repository;
-// Generator tests belong to this repository, not the generated application.
-manifest.scripts.check = 'tsc --noEmit';
-delete manifest.scripts['examples:sync']; delete manifest.scripts['examples:check'];
-delete manifest.scripts.screenshots;
-await writeFile(resolve(target, 'package.json'), `${JSON.stringify(manifest, null, 2)}\n`);
-await writeFile(resolve(target, '.gitignore'), 'node_modules/\ndist/\n.env*\n');
-console.log(`Created ${target}\n\nNext:\n  cd ${JSON.stringify(args[0])}\n  npm install\n  npm run dev\n\nOpen http://localhost:5173/ — demo data works immediately.\nGuide: https://website.w3booster.com/developer/first-app/`);
+import { spawnSync } from 'node:child_process';
+console.log('The starter now lives in W3Booster/app-starter. Forwarding to its generator.');
+const result = spawnSync(process.platform === 'win32' ? 'npx.cmd' : 'npx', ['--yes', '--package=github:W3Booster/app-starter', 'w3booster-create', ...process.argv.slice(2)], { stdio: 'inherit', shell: false });
+if (result.error) console.error(result.error.message);
+process.exitCode = result.status ?? 1;

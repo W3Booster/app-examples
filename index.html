@@ -1,5 +1,29 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="color-scheme" content="dark"><title>W3Booster · Developer Lab</title></head>
-<body><div id="app"></div><script type="module" src="/src/main.ts"></script></body>
-</html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>W3Booster · Public app examples</title>
+<style>:root{color-scheme:dark;font-family:system-ui,sans-serif;background:#101923;color:#e6eef6}body{max-width:1000px;margin:0 auto;padding:48px 24px}h1{font-size:clamp(32px,6vw,60px);line-height:1.05;max-width:800px}p{color:#b1c4d6;line-height:1.7}a{color:#86d7ec;text-underline-offset:4px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin:32px 0}article{border:1px solid #344353;border-radius:12px;padding:24px;background:#152332}article span{font-size:11px;letter-spacing:.07em;color:#a9bfd2}h2{font-size:23px}pre{padding:20px;background:#080f19;border-radius:8px;overflow:auto;line-height:1.7}:focus-visible{outline:3px solid #86d7ec;outline-offset:4px}</style></head>
+<body><header><a href="https://website.w3booster.com/developer/">W3 / Developers</a><h1>Your next app starts here.</h1><p>A minimal starter, four focused examples, and a complete Angular reference. Each project has its own public repository. Demo data works without an account or Warcraft III.</p></header>
+<main><div class="grid"><article><span>FOCUSED EXAMPLE · TYPESCRIPT</span><h2>Match Dashboard</h2><p><a href="https://github.com/W3Booster/app-example-match-dashboard">Public repository ↗</a> · <a href="https://w3booster.github.io/app-example-match-dashboard/">Run demo</a></p></article>
+<article><span>FOCUSED EXAMPLE · TYPESCRIPT</span><h2>Resource Monitor</h2><p><a href="https://github.com/W3Booster/app-example-resource-monitor">Public repository ↗</a> · <a href="https://w3booster.github.io/app-example-resource-monitor/">Run demo</a></p></article>
+<article><span>FOCUSED EXAMPLE · TYPESCRIPT</span><h2>Settings Playground</h2><p><a href="https://github.com/W3Booster/app-example-settings-playground">Public repository ↗</a> · <a href="https://w3booster.github.io/app-example-settings-playground/">Run demo</a></p></article>
+<article><span>FOCUSED EXAMPLE · TYPESCRIPT</span><h2>Clean Overlay</h2><p><a href="https://github.com/W3Booster/app-example-clean-overlay">Public repository ↗</a> · <a href="https://w3booster.github.io/app-example-clean-overlay/">Run demo</a></p></article>
+<article><span>STARTER · TYPESCRIPT</span><h2>W3Booster App Starter</h2><p><a href="https://github.com/W3Booster/app-starter">Public repository ↗</a> · <a href="https://w3booster.github.io/app-starter/">Run demo</a></p></article>
+<article><span>FULL REFERENCE APP · ANGULAR · MIT</span><h2>Match Vision</h2><p>A complete production starting point: dashboard, history, settings, windows, and overlays.</p><p><a href="https://github.com/W3Booster/app-match-vision">Public repository ↗</a> · <a href="https://website.w3booster.com/developer/match-vision/">Build from this app</a></p></article></div>
+<h2>One command to get started</h2><pre><code>npx --yes --package=github:W3Booster/app-starter w3booster-create my-app
+cd my-app
+npm ci
+npm run dev</code></pre><p>Open http://localhost:5173/. <a href="https://website.w3booster.com/developer/first-app/">Follow the tutorial</a>.</p>
+<p>Already installed Match Vision? Its Examples card and library card open the same app—one installation, shared settings and ratings. Forking the source creates your own project with a new registration.</p></main>
+<script>// Compatibility only: new visitors choose a project from this directory.
+const current = new URL(location.href);
+const known = ['match-dashboard', 'resource-monitor', 'settings-playground', 'clean-overlay'];
+const legacyViews = { dashboard: 'match-dashboard', resources: 'resource-monitor', settings: 'settings-playground', overlay: 'clean-overlay', compact: 'match-dashboard' };
+const requested = current.searchParams.get('app');
+const slug = requested ? (known.includes(requested) ? requested : null) : legacyViews[current.searchParams.get('view')];
+if (slug || (!requested && current.searchParams.has('demo'))) {
+  const target = new URL('https://w3booster.github.io/' + (slug ? 'app-example-' + slug : 'app-starter') + '/');
+  target.search = current.search; target.searchParams.delete('app');
+  target.hash = current.hash;
+  location.replace(target.href);
+}
+</script></body></html>
