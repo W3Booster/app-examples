@@ -6,7 +6,7 @@ const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
 const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
 function redirect(query) { let target; runInNewContext(script, { URL, location: { href: 'https://w3booster.github.io/app-examples/' + query, replace: value => target = value } }); return target; }
 test('one directory links independent projects including Match Vision', () => {
-  assert.equal(redirect(''), undefined);
+  assert.equal(redirect(''), 'https://website.w3booster.com/developer/examples/');
   for (const repo of ['app-starter', 'app-example-match-dashboard', 'app-example-resource-monitor', 'app-example-settings-playground', 'app-example-clean-overlay', 'app-match-vision']) assert.ok(html.includes('https://github.com/W3Booster/' + repo));
 });
 test('old routes retain live/demo choice, scenario, view, and authorization hash', () => {
@@ -21,5 +21,5 @@ test('old routes retain live/demo choice, scenario, view, and authorization hash
   }
   assert.equal(new URL(redirect('?view=resources&demo=1')).pathname, '/app-example-resource-monitor/');
   assert.equal(new URL(redirect('?demo=1')).pathname, '/app-starter/');
-  assert.equal(redirect('?app=https://evil.test&demo=1'), undefined);
+  assert.equal(redirect('?app=https://evil.test&demo=1'), 'https://website.w3booster.com/developer/examples/');
 });

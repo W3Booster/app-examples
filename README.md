@@ -1,6 +1,6 @@
-# W3Booster app examples
+# W3Booster app examples — compatibility archive
 
-**Pick a project, open its repository, and run that app.** This repository is a directory—not a bundled starter or a multi-app project.
+**Retired from active development.** The [website examples page](https://website.w3booster.com/developer/examples/) is the current directory. Use the independent repositories below. This read-only archive retains old demo redirects, the old generator entry point, screenshots, and source history.
 
 ## Choose your starting point
 
