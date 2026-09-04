@@ -4,6 +4,8 @@ A complete TypeScript starter and five small examples for building Warcraft III 
 
 [Try the demo](https://w3booster.github.io/app-examples/?demo=1) · [First-app tutorial](https://website.w3booster.com/developer/first-app/) · [SDK docs](https://website.w3booster.com/developer/)
 
+![Developer Lab showing a running match dashboard](docs/preview.png)
+
 ## Create your own app
 
 Install Node.js 22.22.3 or newer, then:
