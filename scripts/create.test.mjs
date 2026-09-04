@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
-import { mkdtemp, readFile, rm } from 'node:fs/promises';
+import { mkdtemp, readFile, rm, access } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
 const run = promisify(execFile);
@@ -18,6 +18,9 @@ test('generator creates a usable project and refuses to overwrite it', async () 
     assert.equal(manifest.scripts.check, 'tsc --noEmit');
     assert.match(await readFile(join(target, 'src/main.ts'), 'utf8'), /runtime.start/);
     assert.match(await readFile(join(target, 'src/w3booster.generated.ts'), 'utf8'), /unregistered_demo/);
+    assert.doesNotMatch(await readFile(join(target, 'src/application.ts'), 'utf8'), /registered\//);
+    await assert.rejects(access(join(target, 'src/registered')));
+    assert.equal(manifest.scripts['examples:sync'], undefined);
     await assert.rejects(run(process.execPath, ['bin/create.mjs', target]), /already exists/);
   } finally { await rm(directory, { recursive: true, force: true }); }
 });

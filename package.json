@@ -12,7 +12,9 @@
     "dev": "vite --host 127.0.0.1 --port 5173 --strictPort",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 5173 --strictPort",
-    "check": "tsc --noEmit && node --test scripts/create.test.mjs",
+    "check": "tsc --noEmit && node scripts/sync-examples.mjs --check && node --test scripts/create.test.mjs",
+    "examples:sync": "node scripts/sync-examples.mjs",
+    "examples:check": "node scripts/sync-examples.mjs --check",
     "test:browser": "node scripts/browser-test.mjs"
   },
   "engines": { "node": ">=22.22.3" },

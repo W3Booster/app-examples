@@ -15,15 +15,17 @@ catch (error) { if (error.code !== 'ENOENT') throw error; }
 const source = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 await mkdir(target, { recursive: true });
 for (const file of ['src', 'scripts', 'docs', 'index.html', 'tsconfig.json', 'vite.config.ts', 'app-definition.json', 'README.md', 'LICENSE']) {
-  await cp(resolve(source, file), resolve(target, file), { recursive: true });
+  await cp(resolve(source, file), resolve(target, file), { recursive: true, filter: path => path !== resolve(source, 'src/registered') && path !== resolve(source, 'scripts/sync-examples.mjs') });
 }
 const manifest = JSON.parse(await readFile(resolve(source, 'package.json'), 'utf8'));
 // Even after the official demo is registered, new projects must have their own identity.
 await cp(resolve(source, 'bin/demo-definition.ts'), resolve(target, 'src/w3booster.generated.ts'));
+await cp(resolve(source, 'bin/demo-application.ts'), resolve(target, 'src/application.ts'));
 manifest.name = basename(target).toLowerCase().replace(/[^a-z0-9-]/g, '-') || 'my-w3booster-app';
 delete manifest.bin; delete manifest.files; delete manifest.repository;
 // Generator tests belong to this repository, not the generated application.
 manifest.scripts.check = 'tsc --noEmit';
+delete manifest.scripts['examples:sync']; delete manifest.scripts['examples:check'];
 await writeFile(resolve(target, 'package.json'), `${JSON.stringify(manifest, null, 2)}\n`);
 await writeFile(resolve(target, '.gitignore'), 'node_modules/\ndist/\n.env*\n');
 console.log(`Created ${target}\n\nNext:\n  cd ${JSON.stringify(args[0])}\n  npm install\n  npm run dev\n\nOpen http://localhost:5173/ — demo data works immediately.\nGuide: https://website.w3booster.com/developer/first-app/`);

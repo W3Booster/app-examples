@@ -58,7 +58,13 @@ Opening localhost directly does not authorize live data. Start a new local test 
 
 Deploy `dist/` to an HTTPS static host. Relative asset URLs support a subdirectory such as GitHub Pages. Configure your registered surface URLs with `?demo=0`; the public demo link uses `?demo=1`. Do not put user credentials in environment variables, source, screenshots, or static bundles.
 
-The checked-in definition is an **unregistered demo placeholder**. Before launching the official example against real data, register the app, replace the binding using the SDK command above, and rebuild. The platform repository supplies `deployment/developer-examples/prepare.mjs` for repeatable registration; registration is not performed by browser code or public CI.
+The default starter definition is an **unregistered demo placeholder**. New projects always receive that placeholder and never inherit the official examples' identities.
+
+The official catalog contains four separately registered apps: **Match Dashboard**, **Resource Monitor**, **Settings Playground**, and **Clean Overlay**. Enable Developer mode in W3Booster, open **Apps → Examples**, and install/open one to use live data and host actions. Their URLs select an app with `?app=match-dashboard`, `?app=resource-monitor`, `?app=settings-playground`, or `?app=clean-overlay`, alongside `view` and `demo`. Query parameters are preserved in child windows.
+
+`examples.json` tracks their public definitions; `src/registered/` contains SDK-generated bindings. Maintainers run `npm run examples:sync` after staging the corresponding platform records. `npm run examples:check` verifies the checked-in output offline. CI publishes `example-bindings.json` with the app build so the platform reapply script can check revisions before publishing catalog entries.
+
+The private platform repository supplies `pnpm reapply:developer-examples` to restore these four curated entries after a database load. It uses stable client IDs, so a normal reapply does not require rebuilding the public app. Database credentials and registration remain outside browser code and public CI.
 
 Apps are sandboxed browser pages. The SDK provides no arbitrary filesystem, shell, or process API. Settings persistence and supported window operations go through the authenticated host. OBS uses the user's stable W3Booster compositor URL, not an app launch URL.
 

@@ -1,12 +1,14 @@
 import './style.css';
 import { canUseHostCapability, classifyW3BoosterError } from '@w3booster/sdk';
-import { w3boosterApp } from './w3booster.generated';
+import { getApplication } from './application';
 import { dashboard } from './examples/dashboard';
 import { resources } from './examples/resources';
 import { settings } from './examples/settings';
 import { element } from './ui';
 
 const query = new URLSearchParams(location.search);
+const w3boosterApp = getApplication(query.get('app'));
+document.body.dataset.application = w3boosterApp.clientId;
 const view = query.get('view') || 'dashboard';
 const demo = query.get('demo') === '1' || (w3boosterApp.clientId === 'unregistered_demo' && query.get('demo') !== '0');
 const overlay = view === 'overlay';
@@ -67,7 +69,10 @@ runtime.lifecycle.subscribe(snapshot => {
   details.textContent = JSON.stringify({ mode: demo ? 'demo' : 'live', status: snapshot.status, synchronized: snapshot.isSynchronized, match: snapshot.state?.match.status, dataCapabilities: snapshot.state?.capabilities || [], host: snapshot.host, definitionRevision: w3boosterApp.revision }, null, 2);
 }, { signal });
 open.addEventListener('click', async () => {
-  try { await runtime.client.host.openWindow({ path: '?view=compact', width: 520, height: 620 }, { signal: runtime.signal, timeout: 10000 }); }
+  try {
+    const parameters = new URLSearchParams(location.search); parameters.set('view', 'compact');
+    await runtime.client.host.openWindow({ path: `?${parameters}`, width: 520, height: 620 }, { signal: runtime.signal, timeout: 10000 });
+  }
   catch { feedback.textContent = 'The host could not open a window. Check Connection & capabilities.'; }
 }, { signal });
 runtime.client.on('issue', issue => { feedback.textContent = `A recoverable ${issue.source} issue occurred. See the browser console.`; console.warn(issue.source, issue.error); }, { signal });

@@ -1,0 +1,194 @@
+[
+  {
+    "sourceUrl": "https://github.com/W3Booster/app-examples",
+    "homepage": "https://website.w3booster.com/developer/examples/",
+    "iconUrl": "https://website.w3booster.com/assets/img/w3booster-icon.png",
+    "screenshotUrls": [
+      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/preview.png"
+    ],
+    "scopes": [
+      "match:read",
+      "players:read",
+      "resources:read",
+      "heroes:read",
+      "overlay:read"
+    ],
+    "settingsSchema": {
+      "version": 1,
+      "sections": [
+        {
+          "id": "display",
+          "title": "Display",
+          "groups": [
+            {
+              "id": "appearance",
+              "title": "Appearance"
+            }
+          ],
+          "fields": [
+            {
+              "key": "display.title",
+              "label": "App title",
+              "type": "text",
+              "group": "appearance",
+              "default": "My first W3Booster app"
+            }
+          ]
+        }
+      ]
+    },
+    "key": "w3booster/match-dashboard/v1",
+    "slug": "match-dashboard",
+    "clientId": "app_737ab3cff407f745a2b64dff",
+    "name": "Match Dashboard",
+    "description": "A small live match dashboard: players, teams, map, game clock, lifecycle, and compact windows. Runnable demo scenarios and full TypeScript source included.",
+    "testUrl": "https://w3booster.github.io/app-examples/?app=match-dashboard&view=dashboard&demo=1",
+    "applicationUrl": "https://w3booster.github.io/app-examples/?app=match-dashboard&view=dashboard&demo=0",
+    "streamOverlayUrl": "",
+    "ingameOverlayUrl": ""
+  },
+  {
+    "sourceUrl": "https://github.com/W3Booster/app-examples",
+    "homepage": "https://website.w3booster.com/developer/examples/",
+    "iconUrl": "https://website.w3booster.com/assets/img/w3booster-icon.png",
+    "screenshotUrls": [
+      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/preview.png"
+    ],
+    "scopes": [
+      "match:read",
+      "players:read",
+      "resources:read",
+      "heroes:read",
+      "overlay:read"
+    ],
+    "settingsSchema": {
+      "version": 1,
+      "sections": [
+        {
+          "id": "display",
+          "title": "Display",
+          "groups": [
+            {
+              "id": "appearance",
+              "title": "Appearance"
+            }
+          ],
+          "fields": [
+            {
+              "key": "display.title",
+              "label": "App title",
+              "type": "text",
+              "group": "appearance",
+              "default": "My first W3Booster app"
+            }
+          ]
+        }
+      ]
+    },
+    "key": "w3booster/resource-monitor/v1",
+    "slug": "resource-monitor",
+    "clientId": "app_57fc0d3d38cdfba3e10fa7c5",
+    "name": "Resource Monitor",
+    "description": "Learn scoped live data with player resources, supply, and hero levels. Handles missing data explicitly and includes offline scenarios and full TypeScript source.",
+    "testUrl": "https://w3booster.github.io/app-examples/?app=resource-monitor&view=resources&demo=1",
+    "applicationUrl": "https://w3booster.github.io/app-examples/?app=resource-monitor&view=resources&demo=0",
+    "streamOverlayUrl": "",
+    "ingameOverlayUrl": ""
+  },
+  {
+    "sourceUrl": "https://github.com/W3Booster/app-examples",
+    "homepage": "https://website.w3booster.com/developer/examples/",
+    "iconUrl": "https://website.w3booster.com/assets/img/w3booster-icon.png",
+    "screenshotUrls": [
+      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/preview.png"
+    ],
+    "scopes": [
+      "match:read",
+      "players:read",
+      "resources:read",
+      "heroes:read",
+      "overlay:read"
+    ],
+    "settingsSchema": {
+      "version": 1,
+      "sections": [
+        {
+          "id": "display",
+          "title": "Display",
+          "groups": [
+            {
+              "id": "appearance",
+              "title": "Appearance"
+            }
+          ],
+          "fields": [
+            {
+              "key": "display.title",
+              "label": "App title",
+              "type": "text",
+              "group": "appearance",
+              "default": "My first W3Booster app"
+            }
+          ]
+        }
+      ]
+    },
+    "key": "w3booster/settings-playground/v1",
+    "slug": "settings-playground",
+    "clientId": "app_d3091e0d2c64c7bb03231375",
+    "name": "Settings Playground",
+    "description": "Learn generated settings and authenticated host actions. Change the app title, persist it through W3Booster, and observe updates across app windows.",
+    "testUrl": "https://w3booster.github.io/app-examples/?app=settings-playground&view=settings&demo=1",
+    "applicationUrl": "https://w3booster.github.io/app-examples/?app=settings-playground&view=settings&demo=0",
+    "streamOverlayUrl": "",
+    "ingameOverlayUrl": ""
+  },
+  {
+    "sourceUrl": "https://github.com/W3Booster/app-examples",
+    "homepage": "https://website.w3booster.com/developer/examples/",
+    "iconUrl": "https://website.w3booster.com/assets/img/w3booster-icon.png",
+    "screenshotUrls": [
+      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/preview.png"
+    ],
+    "scopes": [
+      "match:read",
+      "players:read",
+      "resources:read",
+      "heroes:read",
+      "overlay:read"
+    ],
+    "settingsSchema": {
+      "version": 1,
+      "sections": [
+        {
+          "id": "display",
+          "title": "Display",
+          "groups": [
+            {
+              "id": "appearance",
+              "title": "Appearance"
+            }
+          ],
+          "fields": [
+            {
+              "key": "display.title",
+              "label": "App title",
+              "type": "text",
+              "group": "appearance",
+              "default": "My first W3Booster app"
+            }
+          ]
+        }
+      ]
+    },
+    "key": "w3booster/clean-overlay/v1",
+    "slug": "clean-overlay",
+    "clientId": "app_4a4b824c7670c1003ea20ca0",
+    "name": "Clean Overlay",
+    "description": "A minimal transparent match overlay for OBS and in-game composition. Demonstrates players, teams, game time, and the same SDK runtime as a dashboard.",
+    "testUrl": "https://w3booster.github.io/app-examples/?app=clean-overlay&view=overlay&demo=1",
+    "applicationUrl": "https://w3booster.github.io/app-examples/?app=clean-overlay&view=dashboard&demo=0",
+    "streamOverlayUrl": "https://w3booster.github.io/app-examples/?app=clean-overlay&view=overlay&demo=0",
+    "ingameOverlayUrl": "https://w3booster.github.io/app-examples/?app=clean-overlay&view=overlay&demo=0"
+  }
+]

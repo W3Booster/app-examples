@@ -1,0 +1,24 @@
+{
+  "examples": [
+    {
+      "slug": "match-dashboard",
+      "clientId": "app_737ab3cff407f745a2b64dff",
+      "revision": "055ee999f859efd329758cdb02445c2972a6c5a1a1970b42557f610031a2e99d"
+    },
+    {
+      "slug": "resource-monitor",
+      "clientId": "app_57fc0d3d38cdfba3e10fa7c5",
+      "revision": "280e121b4fb3ea88b42e4ffce14eb34392eb6efbd73476e0b8f4d7e15b755dd9"
+    },
+    {
+      "slug": "settings-playground",
+      "clientId": "app_d3091e0d2c64c7bb03231375",
+      "revision": "6ee1abfb4015f8a670b31d6d16a05f1cc43f6712c88bd6fa43514ae5c76122e9"
+    },
+    {
+      "slug": "clean-overlay",
+      "clientId": "app_4a4b824c7670c1003ea20ca0",
+      "revision": "9bc1cee29acf432e6c43757521365b506a49e4fd957f342a722efda3c7527ce6"
+    }
+  ]
+}
