@@ -13,7 +13,8 @@ test('generator creates a usable project and refuses to overwrite it', async () 
     await run(process.execPath, ['bin/create.mjs', target]);
     const manifest = JSON.parse(await readFile(join(target, 'package.json'), 'utf8'));
     assert.equal(manifest.name, 'my-app');
-    assert.equal(manifest.dependencies['@w3booster/sdk'], '1.0.2');
+    const sourceManifest = JSON.parse(await readFile('package.json', 'utf8'));
+    assert.equal(manifest.dependencies['@w3booster/sdk'], sourceManifest.dependencies['@w3booster/sdk']);
     assert.equal(manifest.scripts.check, 'tsc --noEmit');
     assert.match(await readFile(join(target, 'src/main.ts'), 'utf8'), /runtime.start/);
     assert.match(await readFile(join(target, 'src/w3booster.generated.ts'), 'utf8'), /unregistered_demo/);
