@@ -2,9 +2,9 @@
   {
     "sourceUrl": "https://github.com/W3Booster/app-examples",
     "homepage": "https://website.w3booster.com/developer/examples/",
-    "iconUrl": "https://website.w3booster.com/assets/img/w3booster-icon.png",
+    "iconUrl": "https://w3booster.github.io/app-examples/icons/match-dashboard.svg",
     "screenshotUrls": [
-      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/preview.png"
+      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/match-dashboard.png"
     ],
     "scopes": [
       "match:read",
@@ -50,9 +50,9 @@
   {
     "sourceUrl": "https://github.com/W3Booster/app-examples",
     "homepage": "https://website.w3booster.com/developer/examples/",
-    "iconUrl": "https://website.w3booster.com/assets/img/w3booster-icon.png",
+    "iconUrl": "https://w3booster.github.io/app-examples/icons/resource-monitor.svg",
     "screenshotUrls": [
-      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/preview.png"
+      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/resource-monitor.png"
     ],
     "scopes": [
       "match:read",
@@ -98,9 +98,9 @@
   {
     "sourceUrl": "https://github.com/W3Booster/app-examples",
     "homepage": "https://website.w3booster.com/developer/examples/",
-    "iconUrl": "https://website.w3booster.com/assets/img/w3booster-icon.png",
+    "iconUrl": "https://w3booster.github.io/app-examples/icons/settings-playground.svg",
     "screenshotUrls": [
-      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/preview.png"
+      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/settings-playground.png"
     ],
     "scopes": [
       "match:read",
@@ -146,9 +146,9 @@
   {
     "sourceUrl": "https://github.com/W3Booster/app-examples",
     "homepage": "https://website.w3booster.com/developer/examples/",
-    "iconUrl": "https://website.w3booster.com/assets/img/w3booster-icon.png",
+    "iconUrl": "https://w3booster.github.io/app-examples/icons/clean-overlay.svg",
     "screenshotUrls": [
-      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/preview.png"
+      "https://raw.githubusercontent.com/W3Booster/app-examples/main/docs/clean-overlay.png"
     ],
     "scopes": [
       "match:read",

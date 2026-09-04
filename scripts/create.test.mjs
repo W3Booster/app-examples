@@ -5,7 +5,20 @@ import { promisify } from 'node:util';
 import { mkdtemp, readFile, rm, access } from 'node:fs/promises';
 import { join } from 'node:path';
 import { tmpdir } from 'node:os';
+import { createHash } from 'node:crypto';
 const run = promisify(execFile);
+test('each registered example has its own actual screenshot and icon', async () => {
+  const catalog = JSON.parse(await readFile('examples.json', 'utf8'));
+  const hashes = new Set();
+  for (const app of catalog) {
+    const screenshot = await readFile('docs/' + app.slug + '.png');
+    assert.equal(screenshot.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+    hashes.add(createHash('sha256').update(screenshot).digest('hex'));
+    assert.ok(app.screenshotUrls[0].endsWith('/' + app.slug + '.png'));
+    assert.match(await readFile('public/icons/' + app.slug + '.svg', 'utf8'), /<svg/);
+  }
+  assert.equal(hashes.size, catalog.length);
+});
 test('generator creates a usable project and refuses to overwrite it', async () => {
   const directory = await mkdtemp(join(tmpdir(), 'w3booster-starter-test-'));
   const target = join(directory, 'my-app');

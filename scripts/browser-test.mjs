@@ -12,11 +12,22 @@ try {
   // The standalone generator does not include official registration metadata.
   const catalog = await readFile(new URL('../examples.json', import.meta.url), 'utf8').then(JSON.parse).catch(error => { if (error.code === 'ENOENT') return []; throw error; });
   for (const app of catalog) {
-    const path = new URL(app.testUrl);
+    const path = new URL(app.applicationUrl); path.searchParams.set('demo', '1');
     await page.goto(`http://127.0.0.1:${address.port}/${path.search}`);
     await page.waitForSelector('body[data-synchronized="true"]');
     assert.equal(await page.locator('body').getAttribute('data-application'), app.clientId);
     assert.match(await page.locator('.content').innerText(), app.slug === 'settings-playground' ? /App title/ : /Northwind/);
+    assert.equal(await page.getByRole('link', { name: 'Public repository', exact: false }).getAttribute('href'), 'https://github.com/W3Booster/app-examples');
+    assert.equal(await page.locator('nav[aria-label="Examples"]').count(), 0);
+    if (app.slug === 'settings-playground') {
+      await page.getByRole('textbox', { name: 'App title' }).fill('My tournament desk');
+      assert.equal(await page.locator('.title-preview h3').innerText(), 'My tournament desk');
+      assert.ok((await page.locator('.settings-code').innerText()).includes('My tournament desk'));
+      assert.equal(await page.getByRole('button', { name: 'Save title' }).isDisabled(), true);
+    }
+    await page.setViewportSize({ width: 390, height: 844 });
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), true, app.slug + ' mobile');
+    await page.setViewportSize({ width: 1280, height: 900 });
   }
   for (const view of ['dashboard', 'resources', 'settings', 'overlay', 'compact']) {
     await page.goto(`http://127.0.0.1:${address.port}/?demo=1&view=${view}`);

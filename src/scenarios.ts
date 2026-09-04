@@ -2,7 +2,8 @@ import { createDemoState } from '@w3booster/sdk/testing';
 
 export const scenarios = ['match', 'no-match', 'missing-data', 'teams', 'finished'] as const;
 export function scenarioState(name: string) {
-  const state = createDemoState();
+  const fixture = createDemoState();
+  const state = { ...fixture, match: { ...fixture.match, gameTime: 872 } };
   if (name === 'no-match') return { ...state, match: { id: '', status: 'none' as const, gameTime: 0, mode: '' }, players: [] };
   if (name === 'missing-data') return {
     match: state.match, capabilities: ['match', 'players'] as const,

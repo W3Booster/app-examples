@@ -4,7 +4,7 @@ A complete TypeScript starter and five small examples for building Warcraft III 
 
 [Try the demo](https://w3booster.github.io/app-examples/?demo=1) · [First-app tutorial](https://website.w3booster.com/developer/first-app/) · [SDK docs](https://website.w3booster.com/developer/)
 
-![Developer Lab showing a running match dashboard](docs/preview.png)
+![Match Dashboard with a navy match desk and two opponent panels](docs/match-dashboard.png)
 
 ## Create your own app
 
@@ -28,7 +28,7 @@ Alternatively, clone this repository and run `npm ci` followed by `npm run dev`.
 | Match dashboard | `/` | `src/examples/dashboard.ts` | Initial state, players, clock, no-match state |
 | Resources and heroes | `/?view=resources` | `src/examples/resources.ts` | Scopes, optional data, missing-data UI |
 | Settings | `/?view=settings` | `src/examples/settings.ts` | Host capability discovery and acknowledged writes |
-| Stream overlay | `/?view=overlay` | `src/style.css`, dashboard | Transparent background and a shared data runtime |
+| Stream overlay | `/?view=overlay` | `src/examples/overlay.ts`, `src/style.css` | Transparent broadcast strip and a shared data runtime |
 | Compact window | `/?view=compact` | `src/main.ts` | Host-mediated child windows |
 
 The demo scenario selector covers a normal match, no match, missing optional data, teams, and a finished match. `Connection & capabilities` shows the SDK status, synchronization, data capabilities, host capabilities, and definition revision. In browser DevTools, switching Network to Offline lets you exercise a **live** connection's reconnection behavior; demo mode deliberately has no network transport.
@@ -71,6 +71,21 @@ Apps are sandboxed browser pages. The SDK provides no arbitrary filesystem, shel
 For a larger Angular production reference, see [Match Vision](https://github.com/W3Booster/app-match-vision).
 
 ## Verify
+
+Each registered app has a distinct visual design: a navy match desk, a light
+resource ledger, a violet settings workbench, and a broadcast-overlay studio.
+Every app header links directly to this public repository and its focused source
+module. The pure overlay surface intentionally keeps controls out of the output.
+
+Regenerate the four catalog screenshots with `npm run screenshots`. This captures
+the actual built interfaces using deterministic demo data, not mockup images.
+The files live at `docs/match-dashboard.png`, `docs/resource-monitor.png`,
+`docs/settings-playground.png`, and `docs/clean-overlay.png`; each app also has
+its own SVG icon in `public/icons/`.
+
+Match Vision appears separately as the **reference implementation** in W3Booster's
+Examples section. It is the existing production app, also present in the library,
+with one shared installation, settings, and ratings—not another registration.
 
 ```sh
 npm run check
